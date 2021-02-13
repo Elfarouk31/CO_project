@@ -23,11 +23,11 @@ update_request_data:	#char ch -> $a0 \| int s -> $a1  || int pID ->$a2
 			add $t8, $t6, $t7  #f(X,Y) = (X + Y) =--> Z
 			addu $t8, $t8, $t5 # ( &arr_of_str[i][j] + Z ) =-->Z
 			
-			lw $s1, 0($t8)
-			bne $s1, $a0, exit_loop
+			lw $s1, 0($t8)     #Load 
+			bne $s1, $a0, exit_loop  #if $s1 != $a0 :exit_loop
 			
 			lw $s2, 4($t8) 
-			bne $s2, $a1, exit_loop
+			bne $s2, $a1, exit_loop  #if $s1 != $a1 :exit_loop
 			sw $a2, 8($t8)
 		j scound_loop
 	j first_loop
